@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataStructures", "DataStructures\DataStructures.vcxproj", "{1D074B55-0F43-4416-B91A-CCB4F1AC0A66}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Stack", "Driver\Driver.vcxproj", "{0DBCAB20-80EA-4D97-BBF8-7B05D361EDAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{1D074B55-0F43-4416-B91A-CCB4F1AC0A66}.Release|x64.Build.0 = Release|x64
 		{1D074B55-0F43-4416-B91A-CCB4F1AC0A66}.Release|x86.ActiveCfg = Release|Win32
 		{1D074B55-0F43-4416-B91A-CCB4F1AC0A66}.Release|x86.Build.0 = Release|Win32
+		{0DBCAB20-80EA-4D97-BBF8-7B05D361EDAD}.Debug|x64.ActiveCfg = Debug|x64
+		{0DBCAB20-80EA-4D97-BBF8-7B05D361EDAD}.Debug|x64.Build.0 = Debug|x64
+		{0DBCAB20-80EA-4D97-BBF8-7B05D361EDAD}.Debug|x86.ActiveCfg = Debug|Win32
+		{0DBCAB20-80EA-4D97-BBF8-7B05D361EDAD}.Debug|x86.Build.0 = Debug|Win32
+		{0DBCAB20-80EA-4D97-BBF8-7B05D361EDAD}.Release|x64.ActiveCfg = Release|x64
+		{0DBCAB20-80EA-4D97-BBF8-7B05D361EDAD}.Release|x64.Build.0 = Release|x64
+		{0DBCAB20-80EA-4D97-BBF8-7B05D361EDAD}.Release|x86.ActiveCfg = Release|Win32
+		{0DBCAB20-80EA-4D97-BBF8-7B05D361EDAD}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
