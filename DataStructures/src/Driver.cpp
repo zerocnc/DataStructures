@@ -1,17 +1,26 @@
 #include "Stack.h"
+#include "Queues.h"
 
 #include <iostream>
 
 
 int main()
 {
-	Stack<int> myStack;
-	int temp = 0;
+	Queue<int> myQueue;
+	int x;
 
-	while (!myStack.IsEmpty())
+	myQueue.Enqueue(3);
+	myQueue.Enqueue(4);
+	myQueue.Enqueue(5);
+	myQueue.Enqueue(1);
+	myQueue.Enqueue(9);
+
+	std::cout << "Size of queue is: " << myQueue.Size() << std::endl;
+
+	while (!myQueue.IsEmpty())
 	{
-		myStack.Pop(temp);
-		std::cout << temp << '\t';
+		myQueue.Dequeue(x);
+		std::cout << x << '\t';
 	}
 
 	std::cout << "\nHit the any key." << std::endl;

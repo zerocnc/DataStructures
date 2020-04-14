@@ -18,8 +18,11 @@ public:
 	void MakeEmpty();
 	void Push(T);
 	void Pop(T&);
+
 	bool IsEmpty() const;
 	bool IsFull();
+
+	int Size() const;
 
 private:
 	unsigned int size;
@@ -37,6 +40,8 @@ Stack<T>::~Stack() {
 	MakeEmpty();
 }
 
+// Emptys out the stack.
+// Post: Stack is empty; all items have been removed from the stack.
 template<class T>
 void Stack<T>::MakeEmpty() {
 	
@@ -48,6 +53,7 @@ void Stack<T>::MakeEmpty() {
 		topPtr = topPtr->next;
 		delete tempPtr;
 	}
+	size = 0;
 }
 
 // Adds newItem to the top of the stack.
@@ -61,8 +67,12 @@ void Stack<T>::Push(T newItem) {
 	location->info = newItem;
 	location->next = topPtr;
 	topPtr = location;
+	size++;
 }
 
+// Removes item off the top of the stack.
+// Pre: Stack is not empty and holds an item.
+// Post: item has been removed from top of stack.
 template<class T>
 void Stack<T>::Pop(T& item) {
 	NodeType<T>* tempPtr;
@@ -71,6 +81,7 @@ void Stack<T>::Pop(T& item) {
 	tempPtr = topPtr;
 	topPtr = topPtr->next;
 	
+	size--;
 	delete tempPtr;
 }
 
@@ -91,4 +102,9 @@ bool Stack<T>::IsFull() {
 		delete location;
 		return false;
 	}
+}
+
+template<class T>
+int Stack<T>::Size() const {
+	return size;
 }
