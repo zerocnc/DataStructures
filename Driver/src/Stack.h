@@ -1,11 +1,8 @@
-#pragma once
-
 // Header file for Stack ADT
-
 template<class T>
-struct NodeType {
+struct NodeStack {
 	T info;
-	NodeType* next;
+	NodeStack* next;
 };
 
 template <class T>
@@ -26,7 +23,7 @@ public:
 
 private:
 	unsigned int size;
-	NodeType<T>* topPtr;
+	NodeStack<T>* topPtr;
 
 };
 
@@ -45,7 +42,7 @@ Stack<T>::~Stack() {
 template<class T>
 void Stack<T>::MakeEmpty() {
 	
-	NodeType<T>* tempPtr;
+	NodeStack<T>* tempPtr;
 
 	while (topPtr != nullptr)
 	{
@@ -61,9 +58,9 @@ void Stack<T>::MakeEmpty() {
 // Post: item is at top of stack.
 template<class T>
 void Stack<T>::Push(T newItem) {
-	NodeType<T>* location;
+	NodeStack<T>* location;
 
-	location = new NodeType<T>;
+	location = new NodeStack<T>;
 	location->info = newItem;
 	location->next = topPtr;
 	topPtr = location;
@@ -75,7 +72,7 @@ void Stack<T>::Push(T newItem) {
 // Post: item has been removed from top of stack.
 template<class T>
 void Stack<T>::Pop(T& item) {
-	NodeType<T>* tempPtr;
+	NodeStack<T>* tempPtr;
 
 	item = topPtr->info;
 	tempPtr = topPtr;
@@ -92,9 +89,9 @@ bool Stack<T>::IsEmpty() const{
 
 template<class T>
 bool Stack<T>::IsFull() {
-	NodeType<T>* location;
+	NodeStack<T>* location;
 
-	location = new NodeType<T>;
+	location = new NodeStack<T>;
 	if (location == nullptr)
 		return true;
 	else

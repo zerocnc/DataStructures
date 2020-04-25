@@ -1,7 +1,7 @@
 template<class T>
-struct QueueType {
+struct ItemType {
 	T info;
-	QueueType* next;
+	ItemType* next;
 };
 
 template<class T>
@@ -24,8 +24,8 @@ public:
 private:
 	unsigned int size;
 
-	QueueType<T>* qFront;
-	QueueType<T>* qRear;
+	ItemType<T>* qFront;
+	ItemType<T>* qRear;
 
 };
 
@@ -39,7 +39,7 @@ Queue<T>::~Queue()
 template<class T>
 void Queue<T>::MakeEmpty()
 {
-	QueueType<T>* tempPtr;
+	ItemType<T>* tempPtr;	
 
 	while (qFront != qRear) {
 		tempPtr = qFront;
@@ -55,9 +55,9 @@ void Queue<T>::MakeEmpty()
 // Post: newItem has been added to the rear of the queue.
 template<class T>
 void Queue<T>::Enqueue(T newItem) {
-	QueueType<T>* newNode;
+	ItemType<T>* newNode;
 
-	newNode = new QueueType<T>;
+	newNode = new ItemType<T>;
 	newNode->info = newItem;
 	newNode->next = nullptr;
 
@@ -74,7 +74,7 @@ void Queue<T>::Enqueue(T newItem) {
 // Post: item has been removed from the rear of the queue.
 template <class T>
 void Queue<T>::Dequeue(T& item) {
-	QueueType<T>* tempPtr;
+	ItemType<T>* tempPtr;
 
 	tempPtr = qFront;
 	item = qFront->info;
@@ -93,9 +93,9 @@ bool Queue<T>::IsEmpty() const {
 
 template<class T>
 bool Queue<T>::IsFull() const{
-	QueueType<T>* ptr;
+	ItemType<T>* ptr;
 
-	ptr = new QueueType<T>;
+	ptr = new ItemType<T>;
 	if (ptr == nullptr) {
 		delete ptr;
 		return true;

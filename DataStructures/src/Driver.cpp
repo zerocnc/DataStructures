@@ -1,25 +1,29 @@
 #include "Stack.h"
 #include "Queues.h"
+#include "ListADT.h"
 
 #include <iostream>
 
 
 int main()
 {
-	Queue<int> myQueue;
+	UnsortedType<int> myList;
+
 	int x;
 
-	myQueue.Enqueue(3);
-	myQueue.Enqueue(4);
-	myQueue.Enqueue(5);
-	myQueue.Enqueue(1);
-	myQueue.Enqueue(9);
+	std::cout << "Size of list is: " << myList.LenghtIs() << std::endl;
 
-	std::cout << "Size of queue is: " << myQueue.Size() << std::endl;
+	myList.InsertItem(1);
+	myList.InsertItem(3);
+	myList.InsertItem(5);
+	myList.InsertItem(7);
+	myList.InsertItem(9);
 
-	while (!myQueue.IsEmpty())
+	myList.ResetUnsortedList();
+
+	for (int ndx = 0; ndx < myList.LenghtIs(); ndx++ )
 	{
-		myQueue.Dequeue(x);
+		myList.GetNextItem(x);
 		std::cout << x << '\t';
 	}
 

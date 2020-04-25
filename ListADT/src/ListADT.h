@@ -1,19 +1,18 @@
 #include <inttypes.h>
 
-// Header file for Unosrte list ADT
-
 template<class T>
-struct NodeType{
+struct NodeList{
 	T info;
-	NodeType* next;
+	NodeList* next;
 };
 
+// Header file for Unosrte list ADT
 
 template<class T>
 class UnsortedType {
 public:
 
-	UnsortedType() : length(0), listData(nullptr); // Class Constructor
+	UnsortedType(); // Class Constructor
 	~UnsortedType(); // Class Deconstructor
 
 	bool IsFull() const;
@@ -31,21 +30,35 @@ public:
 	void ResetUnsortedList();
 
 	void GetNextItem(T& item);
+	
+	bool IsEmpty();
 
 private:
 	uint32_t length;
 
-	NodeType<T>* listData;
-	NodeType<T>* currentPos;
+	NodeList<T>* listData;
+	NodeList<T>* currentPos;
 
 };
+
+template <class T>
+UnsortedType<T>::UnsortedType()
+{
+	length = 0;
+	listData = nullptr;
+}
+
+template<class T>
+bool UnsortedType<T>::IsEmpty() {
+	return (length == 0);
+}
 
 // Determines whether the list is full.
 // Post: Function value = (list is full)
 template<class T>
 bool UnsortedType<T>::IsFull() const {
-	NodeType<ItemType>* ptr;
-	ptr = new NodeType<T>;
+	NodeList<ItemType>* ptr;
+	ptr = new NodeList<T>;
 
 	if (ptr == nullptr) {
 		return true;
@@ -56,10 +69,16 @@ bool UnsortedType<T>::IsFull() const {
 	}
 }
 
+template<class T>
+uint32_t UnsortedType<T>::LenghtIs() const
+{
+	return length;
+}
+
 // Post: List is empty; all items have been deallocated.
 template<class T>
 void UnsortedType<T>::MakeEmpty() {
-	NodeType<T> tempPtr;
+	NodeList<T> tempPtr;
 
 	while (listData != nullptr)
 	{
@@ -76,7 +95,7 @@ void UnsortedType<T>::MakeEmpty() {
 template<class T>
 void UnsortedType<T>::RetrieveItem(T& item, bool& found) {
 	bool moreToSearch;
-	NodeType<T>* location;
+	NodeList<T>* location;
 
 	location = listData;
 	found = false;
@@ -89,16 +108,16 @@ void UnsortedType<T>::RetrieveItem(T& item, bool& found) {
 		}
 		else {
 			location = location->next;
-			moreToSearh = (moreToSearch != nullptr);
+			moreToSearch = (moreToSearch != 0 );
 		}
 	}
 }
 
 template<class T>
 void UnsortedType<T>::InsertItem(T item) {
-	NodeType<T>* location;
+	NodeList<T>* location;
 
-	location = new NodeType<T>;
+	location = new NodeList<T>;
 	location->info = item;
 	location->next = listData;
 	listData = location;
@@ -107,8 +126,8 @@ void UnsortedType<T>::InsertItem(T item) {
 
 template<class T>
 void UnsortedType<T>::DeleteItem(T item) {
-	NodeType<T>* location = listData;
-	NodeType<T>* tempLocation;
+	NodeList<T>* location = listData;
+	NodeList<T>* tempLocation;
 
 	// Locate the node to delete
 	if (item == listData->info) {
