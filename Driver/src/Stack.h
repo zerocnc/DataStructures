@@ -37,7 +37,8 @@ Stack<T>::~Stack() {
 	MakeEmpty();
 }
 
-// Emptys out the stack.
+// Sets the stack to an empty state.
+// Pre: None.
 // Post: Stack is empty; all items have been removed from the stack.
 template<class T>
 void Stack<T>::MakeEmpty() {
@@ -55,7 +56,7 @@ void Stack<T>::MakeEmpty() {
 
 // Adds newItem to the top of the stack.
 // Pre: Stack has been initilized and is not full.
-// Post: item is at top of stack.
+// Post: newItem is at top of stack.
 template<class T>
 void Stack<T>::Push(T newItem) {
 	NodeStack<T>* location;
@@ -68,7 +69,7 @@ void Stack<T>::Push(T newItem) {
 }
 
 // Removes item off the top of the stack.
-// Pre: Stack is not empty and holds an item.
+// Pre: Stack is initilized and holds an item.
 // Post: item has been removed from top of stack.
 template<class T>
 void Stack<T>::Pop(T& item) {
@@ -82,11 +83,17 @@ void Stack<T>::Pop(T& item) {
 	delete tempPtr;
 }
 
+// Determines if the stack is empty.
+// Pre: Stack has been initialized.
+// Post: Function value = (topPtr == nullptr)
 template<class T>
 bool Stack<T>::IsEmpty() const{
 	return (topPtr == nullptr);
 }
 
+// Determines if memory is full.
+// Pre: Stack has been initilized.
+// Post: Function Value = (stack is full)
 template<class T>
 bool Stack<T>::IsFull() {
 	NodeStack<T>* location;
@@ -101,6 +108,9 @@ bool Stack<T>::IsFull() {
 	}
 }
 
+// Returns number of items in container.
+// Pre: Stack has been initialized.
+// Post: Function value = (size)
 template<class T>
 int Stack<T>::Size() const {
 	return size;

@@ -35,7 +35,9 @@ Queue<T>::~Queue()
 	Queue::MakeEmpty();
 }
 
-// Post: queue is empty and all items removed.
+// Initilize the queue to an empty state.
+// Pre: None.
+// Post: Queue is empty.
 template<class T>
 void Queue<T>::MakeEmpty()
 {
@@ -85,12 +87,17 @@ void Queue<T>::Dequeue(T& item) {
 	size--;
 }
 
-// Returns true if there are elements in the queue; otherwise returns false.
+// Determines whether the queue is empty.
+// Pre: Queue has been initlized
+// Post: Function value = (Queue is empty)
 template<class T>
 bool Queue<T>::IsEmpty() const {
 	return (qFront == nullptr);
 }
 
+// Determines wheter the queue is full.
+// Pre: Queue has been initilized.
+// Post: Function value = (Queue is full)
 template<class T>
 bool Queue<T>::IsFull() const{
 	ItemType<T>* ptr;
@@ -105,6 +112,9 @@ bool Queue<T>::IsFull() const{
 	}
 }
 
+// Returns number of object container holds.
+// Pre: Queue has been initilized.
+// Post: Function value = (size)
 template<class T>
 unsigned Queue<T>::Size() const {
 	return size;

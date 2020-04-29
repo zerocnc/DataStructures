@@ -20,17 +20,11 @@ public:
 	uint32_t LenghtIs() const;
 
 	void MakeEmpty();
-
 	void RetrieveItem(T& item, bool& found);
-
 	void InsertItem(T item);
-
 	void DeleteItem(T item);
-
 	void ResetUnsortedList();
-
 	void GetNextItem(T& item);
-	
 	bool IsEmpty();
 
 private:
