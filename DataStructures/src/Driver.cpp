@@ -2,6 +2,7 @@
 #include "Queues.h"
 #include "ListADT.h"
 #include "CircularLinked.h"
+#include "BST.h"
 
 #include <iostream>
 
