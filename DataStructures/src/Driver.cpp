@@ -9,7 +9,14 @@
 
 int main()
 {
-	std::cout << "Hello world." << std::endl;
+	TreeType<int> myTree;
+
+	myTree.InsertItem(6);
+	myTree.InsertItem(2);
+	myTree.InsertItem(4);
+	myTree.InsertItem(8);
+	myTree.InsertItem(6);
+	myTree.InsertItem(10);
 	
 
 	std::cout << "\nHit the any key." << std::endl;
