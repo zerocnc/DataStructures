@@ -81,7 +81,7 @@ void Destory(NodeTree<T>*& tree) {
 		Destory(tree->right);
 		delete tree;
 
-		// tree = nullptr; // MSN may needs this!
+		// tree = nullptr; // MS may needs this!
 	}
 }
 

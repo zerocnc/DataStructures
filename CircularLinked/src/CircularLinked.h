@@ -1,4 +1,5 @@
 #include <inttypes.h>
+#include <iostream>
 
 template<class T>
 struct NodeCircle {
