@@ -7,6 +7,7 @@ struct HeapType {
 	int numElements;
 };
 
+// Swaps the elements given, user-defined class has pre-defined move/copy.
 template<class ItemType>
 void Swap(ItemType& x, ItemType& y) {
 	ItemType z;
@@ -26,29 +27,31 @@ void HeapType<ItemType>::ReheapDown(int root, int bottom) {
 	leftChild = root * 2 + 1;
 	rightChild = root * 2 + 2;
 
-	if (leftChild == bottom) {
-		maxChild = leftChild;
-	}
-	else {
-		if (elements[leftChild] <= elements[rightChild])
-			maxChild = rightChild;
-		else
+	if (leftChild <= bottom) {
+		if (leftChild == bottom)
 			maxChild = leftChild;
-	}
-	if (elements[root] < elements[maxChild])
-	{
-		Swap(elements[root], elements[maxChild]);
-		ReheapDown(maxChilde, bottom);
+		else
+		{
+			if (elements[leftChild] <= elements[rightChild])
+				maxChild = rightChild;
+			else
+				maxChild = leftChild;
+		}
+
+		if (elements[root] < elements[maxChild])
+		{
+			Swap(elements[root], elements[maxChild]);
+			ReheapDown(maxChild, bottom);
+		}
 	}
 
-	return;
 }
 
 // Post: Heap property is restored.
 template<class ItemType>
 void HeapType<ItemType>::ReheapUp(int root, int bottom) {
 	
-	int parent;
+	int parent = 0;
 
 	if (bottom > root)
 	{
@@ -89,8 +92,9 @@ private:
 template<class ItemType>
 PQType<ItemType>::PQType(int max) {
 	maxItems = max;
-	items.elements = new ItemType[max];
+	items.elements = new ItemType[max]{'\0'};
 	numItems = 0;
+	items.numElements = 0;
 }
 
 // 	Function: Initializes the queue to an empty state.
@@ -122,7 +126,7 @@ void PQType<ItemType>::Dequeue(ItemType& item) {
 template<class ItemType>
 void PQType<ItemType>::Enqueue(const ItemType item) {
 	// numItems++;
-	items.elements[ numItem++ ] = newItem;
+	items.elements[ numItems++ ] = item;
 	items.ReheapUp(0, numItems - 1);
 }
 
