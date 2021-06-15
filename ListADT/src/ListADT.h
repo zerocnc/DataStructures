@@ -1,3 +1,5 @@
+#pragma once
+
 #include <inttypes.h>
 
 template<class T>
@@ -6,7 +8,12 @@ struct NodeList{
 	NodeList* next;
 };
 
-// Header file for Unosrte list ADT
+/*
+*	Structure: The list elements are of T(type provide by user). This list has a special property
+*	called the current position - the position of the last element accessed by GetNextItem
+*	during an iteration through the list. Only ResetList and GetNextItem affect the current
+*	position.
+*/
 
 template<class T>
 class UnsortedType {
@@ -35,6 +42,7 @@ private:
 
 };
 
+
 template <class T>
 UnsortedType<T>::UnsortedType()
 {
@@ -47,8 +55,8 @@ bool UnsortedType<T>::IsEmpty() {
 	return (length == 0);
 }
 
-// Determines whether the list is full.
-// Post: Function value = (list is full)
+/// <summary>IsFull() determines whether list is full.</summary>
+/// <returns>None</returns>
 template<class T>
 bool UnsortedType<T>::IsFull() const {
 	NodeList<ItemType>* ptr;
@@ -63,13 +71,17 @@ bool UnsortedType<T>::IsFull() const {
 	}
 }
 
+/// <summary>Determines the number of elements.</summary>
+/// <typeparam name="T">- User specified type parameter.</typeparam>
+/// <returns>length of type uint32_t.</returns>
 template<class T>
 uint32_t UnsortedType<T>::LenghtIs() const
 {
 	return length;
 }
 
-// Post: List is empty; all items have been deallocated.
+/// <summary>MakeEmpty() - Initalizes list to empty state</summary>
+/// <returns>None.</returns>
 template<class T>
 void UnsortedType<T>::MakeEmpty() {
 	NodeList<T> tempPtr;
@@ -83,9 +95,13 @@ void UnsortedType<T>::MakeEmpty() {
 	length = 0;
 }
 
-// Pre: Key member(s) of of item is initialized.
-// Post: If found, item's key matches an element's key in the list and a copy of that element has 
-// been stored in item; otherwise, item is unchanged.
+/// <summary>
+/// RetrieveItem(...) retrieves list element whose key matches item's key (if present)
+/// <para>Precondition: Key member(s) of of item is initialized.</para>
+/// <para>Postcondition: If found, item's key matches an element's key in the list and a copy of that element has been stored in item; otherwise, item is unchanged.</para>
+/// </summary>
+/// <param name="item">: Storage for the value found.</param>
+/// <param name="found">: Tells the user if key was found(true) or not in the list(false).</param>
 template<class T>
 void UnsortedType<T>::RetrieveItem(T& item, bool& found) {
 	bool moreToSearch;
@@ -107,6 +123,12 @@ void UnsortedType<T>::RetrieveItem(T& item, bool& found) {
 	}
 }
 
+/// <summary>
+/// Insert(...) Adds item to list.
+/// <para>Preconditions: List has been initalized. The list is not full.</para>
+/// <para>Postcondition: item is in the list.</para>
+/// </summary>
+/// <param name="item">: item the user wants in the list.</param>
 template<class T>
 void UnsortedType<T>::InsertItem(T item) {
 	NodeList<T>* location;
@@ -118,6 +140,12 @@ void UnsortedType<T>::InsertItem(T item) {
 	length++;
 }
 
+/// <summary>
+/// DeleteItem(...) deletes the element whose key matches item's key.
+/// <para></para>
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="item"></param>
 template<class T>
 void UnsortedType<T>::DeleteItem(T item) {
 	NodeList<T>* location = listData;
@@ -140,11 +168,25 @@ void UnsortedType<T>::DeleteItem(T item) {
 	length--;
 }
 
+/// <summary>
+/// ResetUnsortedList() Initializes current position for an iteration though the list.
+/// <para>Precondition: Initializes current position for an iteration though the list.</para>
+/// <para>Postcondition: Current position is prior to first element in list.</para>
+/// </summary>
+/// <typeparam name="T"></typeparam>
 template<class T>
 void UnsortedType<T>::ResetUnsortedList() {
 	currentPos = nullptr;
 }
 
+/// <summary>
+/// GetNextItem() Gets the next element in the list.
+/// <para>Preconditon: List has been initialzed. Current position is defined. Element at current position is not last in list.
+/// </para>
+/// <para>Postcondition: Current position is updated to next position. item is a copy of element at current position.</para>
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="item">: copy of element at current position.</param>
 template<class T>
 void UnsortedType<T>::GetNextItem(T& item) {
 	if (currentPos == nullptr)

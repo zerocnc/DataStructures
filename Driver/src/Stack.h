@@ -15,6 +15,7 @@ public:
 	void MakeEmpty();
 	void Push(T);
 	void Pop(T&);
+	void Peek(T&);
 
 	bool IsEmpty() const;
 	bool IsFull();
@@ -81,6 +82,12 @@ void Stack<T>::Pop(T& item) {
 	
 	size--;
 	delete tempPtr;
+}
+
+template<class T>
+void Stack<T>::Peek(T& item)
+{
+	item = topPtr->info;
 }
 
 // Determines if the stack is empty.

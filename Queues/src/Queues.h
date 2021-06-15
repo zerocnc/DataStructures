@@ -16,6 +16,7 @@ public:
 
 	void Enqueue(T);
 	void Dequeue(T&);
+	void Peek(T&);
 	bool IsFull() const;
 	bool IsEmpty() const;
 	
@@ -50,6 +51,13 @@ void Queue<T>::MakeEmpty()
 	}
 	qRear = nullptr;
 	size = 0;
+}
+
+// Peek
+template<class T>
+void Queue<T>::Peek(T& item)
+{
+	item = qFront->info;
 }
 
 // Adds newItem to the queue at the back of the queue.

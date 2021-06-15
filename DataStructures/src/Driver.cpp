@@ -4,10 +4,15 @@
 #include "PQADT.h"
 #include <iostream>
 
+#include <fstream>
+
+#include <vector>
+
 
 int main()
 {
-
+	uint32_t total = 0;
+	
 
 	std::cout << "\nHit the any key." << std::endl;
 	std::cin.get();
